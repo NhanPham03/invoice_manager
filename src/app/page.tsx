@@ -8,7 +8,7 @@ export default function Home({
   searchParams: {
     show?: string,
   }
-}) {
+}) {  
   const show = searchParams?.show;
 
   return (
