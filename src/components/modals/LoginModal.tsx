@@ -55,14 +55,14 @@ export default function LoginModal() {
 
       <form onSubmit={handleSubmit}>
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex flex-col items-center justify-center">
-          <div className="p-8 border w-96 shadow-lg rounded-md bg-white">
+          <div className="p-8 w-96 shadow-lg rounded-md bg-slate-800">
             <div className="text-center">
-              <h3 className="text-2xl font-bold text-gray-900">Login</h3>
+              <h3 className="text-2xl font-bold">Login</h3>
               <div className="mt-2 px-7 py-3">
                 
                 <div>
                   <div className="relative">
-                  <input className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500" 
+                  <input className="peer block w-full rounded-md py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500" 
                     type="text"
                     name="username"
                     value={formData.username}
@@ -70,13 +70,13 @@ export default function LoginModal() {
                     onChange={handleInputChange}
                     required
                   />
-                    <IdentificationIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+                    <IdentificationIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-600" />
                   </div>
                 </div>
                 
                 <div className="mt-4">
                   <div className="relative">
-                    <input className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500" 
+                    <input className="peer block w-full rounded-md py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500" 
                       type="password"
                       name="password"
                       value={formData.password}
@@ -84,14 +84,14 @@ export default function LoginModal() {
                       onChange={handleInputChange}
                       required
                     />
-                    <KeyIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+                    <KeyIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-600" />
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="flex justify-center mt-4">
-              <button className="px-4 py-2 bg-blue-500 text-white text-base font-medium rounded-md shadow-sm hover:bg-blue-300 ease-in duration-100"
+              <button className="px-4 py-2 bg-green-600 text-white text-base font-medium rounded-md shadow-sm hover:bg-green-500 ease-in duration-100"
                 type="submit"
                 disabled={isLoading}
               >
@@ -102,14 +102,14 @@ export default function LoginModal() {
             <div className="flex justify-center mt-4 gap-1">
               <p>Don't have an account?</p>
               <Link className="text-blue-500 underline hover:text-blue-300"
-                href={pathname + "?show=signup"}
+                href={pathname + "?show=register"}
               >
                 Sign up!
               </Link>
             </div>
 
             <div className="flex justify-center mt-4">
-              <Link className="px-4 py-2 bg-red-500 text-white text-base font-medium rounded-md shadow-sm hover:bg-red-300 ease-in duration-100"
+              <Link className="px-4 py-2 bg-red-600 text-white text-base font-medium rounded-md shadow-sm hover:bg-red-500 ease-in duration-100"
                 href={pathname}
               >
                 Close

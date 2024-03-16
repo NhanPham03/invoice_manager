@@ -3,7 +3,7 @@
 import { AtSymbolIcon, CheckCircleIcon, IdentificationIcon, KeyIcon, UserIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 export default function RegisterModal() {
   const pathname = usePathname();
@@ -26,7 +26,7 @@ export default function RegisterModal() {
     });
   };
 
-  async function handleSubmit(event: any) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setIsLoading(true);
     setError(null);
@@ -59,14 +59,14 @@ export default function RegisterModal() {
 
       <form onSubmit={handleSubmit}>
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex flex-col items-center justify-center">
-          <div className="p-8 border w-96 shadow-lg rounded-md bg-white">
+          <div className="p-8 w-96 shadow-lg rounded-md bg-slate-800">
             <div className="text-center">
-              <h3 className="text-2xl font-bold text-gray-900">Register</h3>
+              <h3 className="text-2xl font-bold">Register</h3>
               <div className="mt-2 px-7 py-3">
                 
                 <div>
                   <div className="relative">
-                  <input className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500" 
+                  <input className="peer block w-full rounded-md py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500" 
                     type="text" 
                     name="username"
                     value={formData.username}
@@ -74,13 +74,13 @@ export default function RegisterModal() {
                     onChange={handleInputChange}
                     required
                   />
-                    <IdentificationIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+                    <IdentificationIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-600" />
                   </div>
                 </div>
 
                 <div className="mt-4 grid grid-cols-2 grid-rows-1 gap-2">
                   <div>
-                    <input className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-3 text-sm outline-2 placeholder:text-gray-500" 
+                    <input className="peer block w-full rounded-md py-[9px] pl-3 text-sm outline-2 placeholder:text-gray-500" 
                       type="text"
                       name="first_name"
                       value={formData.first_name}
@@ -88,10 +88,10 @@ export default function RegisterModal() {
                       onChange={handleInputChange}
                       required
                     />
-                      <UserIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+                      <UserIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-600" />
                   </div>
                   <div>
-                    <input className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-3 text-sm outline-2 placeholder:text-gray-500" 
+                    <input className="peer block w-full rounded-md py-[9px] pl-3 text-sm outline-2 placeholder:text-gray-500" 
                       type="text"
                       name="last_name"
                       value={formData.last_name}
@@ -99,13 +99,13 @@ export default function RegisterModal() {
                       onChange={handleInputChange}
                       required
                     />
-                      <UserIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+                      <UserIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-600" />
                   </div>
                 </div>
 
                 <div className="mt-4">
                   <div className="relative">
-                  <input className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500" 
+                  <input className="peer block w-full rounded-md py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500" 
                     type="email"
                     name="email"
                     value={formData.email}
@@ -113,13 +113,13 @@ export default function RegisterModal() {
                     onChange={handleInputChange}
                     required
                   />
-                    <AtSymbolIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+                    <AtSymbolIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-600" />
                   </div>
                 </div>
                 
                 <div className="mt-4">
                   <div className="relative">
-                    <input className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500" 
+                    <input className="peer block w-full rounded-md py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500" 
                       type="password"
                       name="password"
                       value={formData.password}
@@ -127,13 +127,13 @@ export default function RegisterModal() {
                       onChange={handleInputChange}
                       required
                     />
-                    <KeyIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+                    <KeyIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-600" />
                   </div>
                 </div>
 
                 <div className="mt-4">
                   <div className="relative">
-                    <input className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500" 
+                    <input className="peer block w-full rounded-md py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500" 
                       type="password"
                       name="confirm_password"
                       value={formData.confirm_password}
@@ -141,7 +141,7 @@ export default function RegisterModal() {
                       onChange={handleInputChange}
                       required
                     />
-                    <CheckCircleIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+                    <CheckCircleIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-600" />
                   </div>
                 </div>
 
@@ -149,7 +149,7 @@ export default function RegisterModal() {
             </div>
 
             <div className="flex justify-center mt-4">
-              <button className="px-4 py-2 bg-blue-500 text-white text-base font-medium rounded-md shadow-sm hover:bg-blue-300 ease-in duration-100"
+              <button className="px-4 py-2 bg-green-600 text-white text-base font-medium rounded-md shadow-sm hover:bg-green-500 ease-in duration-100"
                 type="submit"
               >
                 {isLoading ? 'Loading...' : 'Register'}
@@ -166,7 +166,7 @@ export default function RegisterModal() {
             </div>
 
             <div className="flex justify-center mt-4">
-              <Link className="px-4 py-2 bg-red-500 text-white text-base font-medium rounded-md shadow-sm hover:bg-pink-300 ease-in duration-100"
+              <Link className="px-4 py-2 bg-red-600 text-white text-base font-medium rounded-md shadow-sm hover:bg-red-500 ease-in duration-100"
                 href={pathname}
               >
                 Close
