@@ -1,9 +1,4 @@
-import SideNav from "@/components/SideNav";
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Home",
-};
+import SideNav from "@/components/sidenav/SideNav";
 
 export default function Layout({ children }: {
   children: React.ReactNode
@@ -13,7 +8,7 @@ export default function Layout({ children }: {
       <div className="flex-none w-full md:w-64">
         <SideNav />
       </div>
-      <div className="h-full w-full">{children}</div>
+      <div className="h-full w-full mr-2 my-4">{children}</div>
     </div>
   );
 }

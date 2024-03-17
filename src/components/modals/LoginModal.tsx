@@ -5,6 +5,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FormEvent, useState } from "react";
 
+const inputStyle = "block w-full rounded-md py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500";
+const iconStyle = "pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-600";
+
 export default function LoginModal() {
   const pathname = usePathname();
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -43,7 +46,7 @@ export default function LoginModal() {
       }
     } catch (error: any) {
       setError(error.message);
-      console.error('ERROR:', error);
+      console.error('ERROR: ', error);
     } finally {
       setIsLoading(false);
     }
@@ -56,37 +59,31 @@ export default function LoginModal() {
       <form onSubmit={handleSubmit}>
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex flex-col items-center justify-center">
           <div className="p-8 w-96 shadow-lg rounded-md bg-slate-800">
-            <div className="text-center">
-              <h3 className="text-2xl font-bold">Login</h3>
-              <div className="mt-2 px-7 py-3">
-                
-                <div>
-                  <div className="relative">
-                  <input className="peer block w-full rounded-md py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500" 
-                    type="text"
-                    name="username"
-                    value={formData.username}
-                    placeholder="Username"
-                    onChange={handleInputChange}
-                    required
-                  />
-                    <IdentificationIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-600" />
-                  </div>
-                </div>
-                
-                <div className="mt-4">
-                  <div className="relative">
-                    <input className="peer block w-full rounded-md py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500" 
-                      type="password"
-                      name="password"
-                      value={formData.password}
-                      placeholder="Password" 
-                      onChange={handleInputChange}
-                      required
-                    />
-                    <KeyIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-600" />
-                  </div>
-                </div>
+            <h3 className="text-2xl text-center font-bold">Login</h3>
+
+            <div className="mt-2 px-7 py-3">
+              <div className="relative">
+                <input className={inputStyle} 
+                  type="text"
+                  name="username"
+                  value={formData.username}
+                  placeholder="Username"
+                  onChange={handleInputChange}
+                  required
+                />
+                <IdentificationIcon className={iconStyle} />
+              </div>
+              
+              <div className="relative mt-4">
+                <input className={inputStyle} 
+                  type="password"
+                  name="password"
+                  value={formData.password}
+                  placeholder="Password" 
+                  onChange={handleInputChange}
+                  required
+                />
+                <KeyIcon className={iconStyle} />
               </div>
             </div>
 

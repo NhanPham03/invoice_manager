@@ -1,6 +1,13 @@
 import LoginModal from "@/components/modals/LoginModal";
 import RegisterModal from "@/components/modals/RegisterModal";
+import HomeTable from "@/components/tables/HomeTable";
+import { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
+
+export const metadata: Metadata = {
+  title: "Home",
+};
 
 export default function Home({
   searchParams
@@ -25,6 +32,11 @@ export default function Home({
           </Link>
           )
         </p>
+      </div>
+      <div className="w-1/2 my-2">
+        <Suspense fallback={<p>Loading...</p>}>
+          <HomeTable />
+        </Suspense>
       </div>
       
       {show === "login" && <LoginModal />}

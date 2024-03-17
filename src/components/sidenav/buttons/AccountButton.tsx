@@ -27,11 +27,13 @@ export default function AccountButton() {
           <div className="flex flex-col">
             <Link className="px-1 py-2 text-sm text-center font-semibold transition ease-in duration-100 hover:bg-green-950 hover:text-green-600"
               href={pathname + "?show=login"}
+              onClick={handleClick}
             >
               Login
             </Link>
             <Link className="px-1 py-2 text-sm text-center font-semibold transition ease-in duration-100 hover:bg-green-950 hover:text-green-600"
               href={pathname + "?show=register"}
+              onClick={handleClick}
             >
               Register
             </Link>
