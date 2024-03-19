@@ -1,6 +1,6 @@
 'use client';
 
-import { setAuthTokens } from "@/lib/actions/auth";
+import { setAuthTokens } from "@/lib/actions/auth.action";
 import { login } from "@/lib/actions/login.action";
 import { loginFormBody, loginFormBodyType } from "@/lib/schema/auth.schema";
 

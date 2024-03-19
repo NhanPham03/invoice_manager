@@ -1,6 +1,6 @@
 import { CommandLineIcon } from "@heroicons/react/24/outline";
 import NavLinks from "@/components/sidenav/NavLinks";
-import AccountButton from "@/components/sidenav/buttons/AccountButton";
+import AccountButton from "@/components/buttons/AccountButton";
 
 export default function SideNav() {
   return (

@@ -15,7 +15,10 @@ const initData = {
   status: 'pending',
 };
 
-export default function InvoiceForm() {
+export default function InvoiceForm({ buttonText, id }: {
+  buttonText: string,
+  id?: string,
+}) {
   const [formData, setFormData] = useState(initData);
 
   function handleChange(event: any) {
@@ -62,7 +65,7 @@ export default function InvoiceForm() {
             
             {/* Company */}
             <div className="relative mt-4">
-              <label htmlFor="company">Company</label>
+              <label htmlFor="company">Company:</label>
               <input className={inputIconStyle}
                 type="text"
                 name="company"
@@ -75,7 +78,7 @@ export default function InvoiceForm() {
             </div>
             
             <div className="relative mt-4">
-              <label htmlFor="amount">Amount</label>
+              <label htmlFor="amount">Amount:</label>
               <input className={inputIconStyle}
                 type="number"
                 name="amount"
@@ -123,7 +126,7 @@ export default function InvoiceForm() {
         <button className="px-4 py-2 bg-green-600 text-white text-base font-medium rounded-md shadow-sm hover:bg-green-500 ease-in duration-100"
           type="submit"
         >
-          Create
+          {buttonText}
         </button>          
       </div>
     </form>
