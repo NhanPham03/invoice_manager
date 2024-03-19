@@ -1,5 +1,4 @@
 import LoginModal from "@/components/modals/LoginModal";
-import RegisterModal from "@/components/modals/RegisterModal";
 import HomeTable from "@/components/tables/HomeTable";
 import { Metadata } from "next";
 import Link from "next/link";
@@ -33,14 +32,13 @@ export default function Home({
           )
         </p>
       </div>
-      <div className="w-1/2 my-2">
+      <div className="my-2">
         <Suspense fallback={<p>Loading...</p>}>
           <HomeTable />
         </Suspense>
       </div>
       
       {show === "login" && <LoginModal />}
-      {show === "register" && <RegisterModal />}
     </main>
   );
 }

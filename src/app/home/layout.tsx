@@ -8,7 +8,7 @@ export default function Layout({ children }: {
       <div className="flex-none w-full md:w-64">
         <SideNav />
       </div>
-      <div className="h-full w-full mr-2 my-4">{children}</div>
+      <div className="h-full w-full m-4 md:my-4">{children}</div>
     </div>
   );
 }
