@@ -16,8 +16,8 @@ export default function EditInvoice({ params }: {
     <main className="flex flex-col gap-2 md:h-screen">
       <h3 className="font-bold text-3xl my-4 text-center">Edit Invoice</h3>
 
-      <div className="items-center justify-center">
-        <InvoiceForm buttonText={"Update"} id={id} />
+      <div className="max-w-screen-lg mx-auto">
+        <InvoiceForm action="Edit" />
       </div>
     </main>
   );

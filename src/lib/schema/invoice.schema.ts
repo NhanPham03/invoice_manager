@@ -1,20 +1,48 @@
 import * as z from "zod";
 
-export const invoiceFormBody = z.object({
-  id: z
-    .string(),
+const productSchema = z.object({
   name: z
     .string()
-    .min(1, "Name must not be empty"),
+    .min(1, "Please enter a product name."),
+  quantity: z
+    .string()
+    .transform((val) => parseInt(val, 10))
+    .refine((val) => !isNaN(val) && Number.isInteger(val), "Quantity must be an integer.")
+    .refine((val) => val > 0, "Quantity must be positive."),
+  price: z
+    .string()
+    .transform((val) => parseFloat(val))
+    .refine((val) => !isNaN(val) && val > 0, "Price must be positive."),
+});
+
+const customerSchema = z.object({
+  first_name: z
+    .string(),
+  last_name: z
+    .string(),
   email: z
     .string()
     .email(),
   company: z
     .string(),
-  amount: z
-    .coerce
-    .number()
-    .gt(0, "Amount must be higher than 0"),
-  status: z
-    .enum(['pending', 'paid']),
+  phone: z
+    .string(),
+  address: z
+    .string(),
+  city: z
+    .string(),
+  province: z
+    .string(),
+  postal_code: z
+    .string(),
+  country: z
+    .string(),
 });
+
+export const invoiceFormBody = z.object({
+  customer: customerSchema,
+  products: z
+    .array(productSchema),
+});
+
+export type invoiceFormBodyType = z.infer<typeof invoiceFormBody>;

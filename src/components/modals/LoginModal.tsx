@@ -33,7 +33,6 @@ export default function LoginModal() {
   };
 
   async function onSubmit(data: loginFormBodyType) {
-    console.log("FORM SUBMIT");
     setIsLoading(true);
 
     try {

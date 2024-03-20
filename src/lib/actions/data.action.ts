@@ -1,87 +1,67 @@
-import { revalidatePath } from "next/cache";
-import { invoiceFormBody } from "../schema/invoice.schema";
-import { redirect } from "next/navigation";
+import { invoiceFormBodyType } from "../schema/invoice.schema";
 
-const CreateInvoice = invoiceFormBody.omit({ id: true });
-const UpdateInvoice = invoiceFormBody.omit({ id: true });
+export const getAllInvoices = async () => {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api-view/invoice/`, {
+      method: "GET",
+    });
 
-export type State = {
-  errors?: {
-    name?: string[];
-    amount?: string[];
-    status?: string[];
-  };
-  message?: string | null;
+    if (!res.ok) {
+      throw new Error("Get failed");
+    }
+
+    const resData = await res.json();
+
+    console.log(resData);
+    return resData;
+  } catch (error) {
+    console.error("ERROR GETTING INVOICES:", error);
+    throw error;
+  }
 };
 
-export async function createInvoice(prevState: State, formData: FormData) {
-  const validatedFields = CreateInvoice.safeParse({
-    name: formData.get("name"),
-    email: formData.get("email"),
-    company: formData.get("company"),
-    amount: formData.get("amount"),
-    status: formData.get("status")
-  });
-
-  if (!validatedFields.success) {
-    return {
-      errors: validatedFields.error.flatten().fieldErrors,
-      message: "Missing fields. Failed to create Invoice."
-    };
-  }
-
-  const { name, email, company, amount, status } = validatedFields.data;
-
+export const createInvoice = async (data: invoiceFormBodyType) => {
   try {
-    // INSERT NEW INVOICE
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api-view/invoice/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!res.ok) {
+      throw new Error("Create failed");
+    }
+
+    const resData = await res.json();
+
+    console.log(resData);
   } catch (error) {
-    return {
-      message: `Database error: ${error}`
-    };
+    console.error("ERROR CREATING INVOICE:", error);
+    throw error;
   }
+};
 
-  revalidatePath("/home/invoice");
-  redirect("/home/invoice");
-}
-
-export async function updateInvoice(id: string, prevState: State, formData: FormData) {
-  const validatedFields = UpdateInvoice.safeParse({
-    name: formData.get("name"),
-    email: formData.get("email"),
-    company: formData.get("company"),
-    amount: formData.get("amount"),
-    status: formData.get("status")
-  });
-
-  if (!validatedFields.success) {
-    return {
-      errors: validatedFields.error.flatten().fieldErrors,
-      message: "Missing fields. Failed to update Invoice."
-    };
-  }
-
-  const { name, email, company, amount, status } = validatedFields.data;
-
+export const editInvoice = async (data: invoiceFormBodyType) => {
   try {
-    // UPDATE INVOICE
+    const res = await fetch("", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!res.ok) {
+      throw new Error("Create failed");
+    }
+
+    const resData = await res.json();
+
+    console.log(resData);
   } catch (error) {
-    return {
-      message: `Database error: ${error}`
-    };
+    console.error("ERROR CREATING INVOICE:", error);
+    throw error;
   }
-
-  revalidatePath("/home/invoice");
-  redirect("/home/invoice");
-}
-
-export async function deleteInvoice(id: string) {
-  try {
-    // DELETE INVOICE
-  } catch (error) {
-    return {
-      message: `Database error: ${error}`
-    };
-  }
-
-  revalidatePath("/home/invoice");
-}
+};

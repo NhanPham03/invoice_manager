@@ -1,6 +1,5 @@
 "use client";
 
-import { deleteInvoice } from "@/lib/actions/data.action";
 import { PencilIcon, PlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
@@ -33,7 +32,7 @@ export function DeleteInvoiceButton({ id }: {
   id: string
 }) {
   async function handleClick() {
-    await deleteInvoice(id);
+    
   }
 
   return (

@@ -1,5 +1,5 @@
-import SearchBar from "@/components/SearchBar";
 import { CreateInvoiceButton } from "@/components/buttons/InvoiceButtons";
+import SearchBar from "@/components/SearchBar";
 import InvoiceTable from "@/components/tables/InvoiceTable";
 import { Metadata } from "next";
 import { Suspense } from "react";

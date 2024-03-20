@@ -2,7 +2,7 @@ import { loginFormBodyType } from "../schema/auth.schema";
 
 export const login = async (data: loginFormBodyType) => {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api-view/sign-in/`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/token/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -10,7 +10,7 @@ export const login = async (data: loginFormBodyType) => {
       body: JSON.stringify(data),
     });
 
-    if (!res) {
+    if (!res.ok) {
       throw new Error("Login failed");
     }
 
@@ -19,7 +19,7 @@ export const login = async (data: loginFormBodyType) => {
     console.log(tokens);
     return tokens;
   } catch (error) {
-    console.error("Login ERROR:", error);
+    console.error("ERROR LOGGING IN:", error);
     throw error;
   }
 };
